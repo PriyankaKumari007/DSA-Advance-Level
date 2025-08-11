@@ -1,7 +1,6 @@
 let firstName = "Priyanka";
 let lastName = "Mahato";
-let age = 25;
-let isStudent = true;
+
 
 console.log(firstName + " " + lastName);
 console.log("Hello my first name is" +" "+firstName + " and my last name is " + lastName);

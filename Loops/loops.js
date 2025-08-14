@@ -38,19 +38,66 @@
 
 //3.Write a function that returns the largest number in an array
 
-const arr=[-9,-19,-3];
-function findLargest(arr)
+// const arr=[-9,-19,-3];
+// function findLargest(arr)
+// {
+//     let largest= -Infinity; // arr[0]
+//     for(let i=0;i<arr.length;i++)
+//     {
+//         if(arr[i]>largest)
+//         {
+//             largest=arr[i];
+//         }
+//     }
+//     return largest;
+// }
+
+// const largestNumber = findLargest(arr);
+// console.log("Largest-Number",largestNumber);
+
+
+//4. write a function to find second largest element in an array
+//Brute Force Approach
+
+function secondLargestElement(arr)
 {
-    let largest= -Infinity; // arr[0]
+    if(arr.length <2) //should handle this corner case
+    {
+        return null;
+    }
+    let largest=-Infinity; //for negative array elements
+    let secondLargest=-Infinity; //Dont assign 0 it will fail in -ve cases
     for(let i=0;i<arr.length;i++)
     {
-        if(arr[i]>largest)
-        {
-            largest=arr[i];
-        }
-    }
-    return largest;
-}
+    //     if(largest!=secondLargest &&  arr[i]>largest && arr[i]>secondLargest) //wrong approach
+    //     {
+    //         secondLargest = largest;
+    //     }
+    //    else  if(arr[i]>largest)
+    //     {
+    //         largest=arr[i];
+    //     }
 
-const largestNumber = findLargest(arr);
-console.log("Largest-Number",largestNumber);
+    if(arr[i]>largest)
+    {
+        secondLargest=largest;
+        largest=arr[i];
+    }
+    else if(arr[i]>secondLargest && arr[i]<largest) //handle duplication of array element
+    {
+        secondLargest=arr[i];
+    }
+      
+    }
+      return secondLargest;
+}
+const arr=[-1,-45,-2,-29];
+const result = secondLargestElement(arr);
+console.log("secondLargestElement",result);
+
+
+
+//Note (Handle corner cases)
+//   - Array is empty
+//   -Array has negative numbers
+//   -Array has duplicates
